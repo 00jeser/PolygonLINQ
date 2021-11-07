@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31825.309
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolygonLINQ", "PolygonLINQ\PolygonLINQ.csproj", "{CF12A7A1-D73E-42E9-B4AE-60850A85BB9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{84F04D79-F682-4418-8B35-1269621F117E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleExample", "ConsoleTest\ConsoleExample.csproj", "{84F04D79-F682-4418-8B35-1269621F117E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{0B9AC5A7-5D49-4F9D-AD41-B097434F0A30}"
 EndProject
