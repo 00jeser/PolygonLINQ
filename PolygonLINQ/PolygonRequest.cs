@@ -62,7 +62,7 @@ public class PolygonRequest
         if (Result == false)
             return new PolygonRequest(Polygon) { Result = false };
 
-        if(endIndex == -1)
+        if (endIndex == -1)
             endIndex = Polygon.Points.Count;
         for (int i = startIndex; i < Polygon.Points.Count; i++)
             if (!func(Polygon.Sides, i, Polygon.Sides[i]))
@@ -78,6 +78,30 @@ public class PolygonRequest
             endIndex = Polygon.Points.Count;
         for (int i = startIndex; i < Polygon.Points.Count; i++)
             if (!func(Polygon.Sides[i]))
+                return new PolygonRequest(Polygon) { Result = false };
+        return new PolygonRequest(Polygon) { Result = true };
+    }
+    public PolygonRequest IsAllCornersIs(Func<double[], int, double, bool> func, int startIndex = 0, int endIndex = -1)
+    {
+        if (Result == false)
+            return new PolygonRequest(Polygon) { Result = false };
+
+        if (endIndex == -1)
+            endIndex = Polygon.Points.Count;
+        for (int i = startIndex; i < Polygon.Points.Count; i++)
+            if (!func(Polygon.Corners, i, Polygon.Corners[i]))
+                return new PolygonRequest(Polygon) { Result = false };
+        return new PolygonRequest(Polygon) { Result = true };
+    }
+    public PolygonRequest IsAllCornersIs(Func<double, bool> func, int startIndex = 0, int endIndex = -1)
+    {
+        if (Result == false)
+            return new PolygonRequest(Polygon) { Result = false };
+
+        if (endIndex == -1)
+            endIndex = Polygon.Points.Count;
+        for (int i = startIndex; i < Polygon.Points.Count; i++)
+            if (!func(Polygon.Corners[i]))
                 return new PolygonRequest(Polygon) { Result = false };
         return new PolygonRequest(Polygon) { Result = true };
     }

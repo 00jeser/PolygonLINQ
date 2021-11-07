@@ -16,15 +16,13 @@ checking a polygon for a rectangle
 ```cs
 (bool)_polygon.CheckIfThis.
     IsCornerCount(4).
-    IsTwoSidesParallel(0, 2).
-    IsTwoSidesParallel(1, 3)
+    IsAllCornersIs(x => x == 90)
 ```
 checking a polygon for a square
 ```cs
 (bool)_polygon.CheckIfThis.
     IsCornerCount(4).
-    IsTwoSidesParallel(0, 2).
-    IsTwoSidesParallel(1, 3).
+    IsAllCornersIs(x => x == 90).
     IsAllSidesIs((l, i, x) => l[i-1] == x, 1)
 ```
 
@@ -44,5 +42,9 @@ IsTwoSidesParallel(int n1, int n2)
 // checking the function for all sides
 IsAllSidesIs(Func<double[], int, double, bool> func, int startIndex = 0, int endIndex = -1)
 IsAllSidesIs(Func<double, bool> func, int startIndex = 0, int endIndex = -1)
+
+// checking the function for all corner
+IsAllCornersIs(Func<double[], int, double, bool> func, int startIndex = 0, int endIndex = -1)
+IsAllCornersIs(Func<double, bool> func, int startIndex = 0, int endIndex = -1)
 ```
 

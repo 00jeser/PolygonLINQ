@@ -74,7 +74,6 @@ public class Polygon
             var crns = new List<double>(_points.Count+1);
             for (int i = 0; i < _points.Count; i++)
             {
-                // A = _points[i], B = _points[(i + 2) % _points.Count], C = _points[(i + 1) % _points.Count]
                 var Ax = _points[(i + 1) % _points.Count].x - Points[i].x;
                 var Ay = _points[(i + 1) % _points.Count].y - Points[i].y;
                 var Bx = _points[(i + 1) % _points.Count].x - Points[(i + 2) % _points.Count].x;

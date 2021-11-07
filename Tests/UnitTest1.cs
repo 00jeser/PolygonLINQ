@@ -80,6 +80,16 @@ public class TestFunctions
         pol.Points.Add(new Point(0, 1));
         Assert.IsTrue((bool)pol.CheckIfThis.IsAllSidesIs((l, i, x) => x == l[i-1], 1));
     }
+    [TestMethod]
+    public void IsAllCornersIs90()
+    {
+        Polygon pol = new();
+        pol.Points.Add(new Point(0, 0));
+        pol.Points.Add(new Point(2, 0));
+        pol.Points.Add(new Point(2, 1));
+        pol.Points.Add(new Point(0, 1));
+        Assert.IsTrue((bool)pol.CheckIfThis.IsAllCornersIs(x => x == 90));
+    }
 }
 [TestClass]
 public class TestFigures
@@ -92,7 +102,10 @@ public class TestFigures
         pol.Points.Add(new Point(1, 0));
         pol.Points.Add(new Point(1, 1));
         pol.Points.Add(new Point(0, 1));
-        Assert.IsTrue((bool)pol.CheckIfThis.IsCornerCount(4).IsTwoSidesParallel(0, 2).IsTwoSidesParallel(1, 3).IsAllSidesIs((l, i, x) => l[i - 1] == x, 1));
+        Assert.IsTrue((bool)pol.CheckIfThis.
+            IsCornerCount(4).
+            IsAllCornersIs(x => x == 90).
+            IsAllSidesIs((l, i, x) => l[i - 1] == x, 1));
     }
     [TestMethod]
     public void RectIsSquare()
@@ -102,7 +115,10 @@ public class TestFigures
         pol.Points.Add(new Point(2, 0));
         pol.Points.Add(new Point(2, 1));
         pol.Points.Add(new Point(0, 1));
-        Assert.IsFalse((bool)pol.CheckIfThis.IsCornerCount(4).IsTwoSidesParallel(0, 2).IsTwoSidesParallel(1, 3).IsAllSidesIs((l, i, x) => l[i - 1] == x, 1));
+        Assert.IsFalse((bool)pol.CheckIfThis.
+            IsCornerCount(4).
+            IsAllCornersIs(x => x == 90).
+            IsAllSidesIs((l, i, x) => l[i - 1] == x, 1));
     }
     [TestMethod]
     public void SquareIsRect()
@@ -112,7 +128,9 @@ public class TestFigures
         pol.Points.Add(new Point(1, 0));
         pol.Points.Add(new Point(1, 1));
         pol.Points.Add(new Point(0, 1));
-        Assert.IsTrue((bool)pol.CheckIfThis.IsCornerCount(4).IsTwoSidesParallel(0, 2).IsTwoSidesParallel(1, 3));
+        Assert.IsTrue((bool)pol.CheckIfThis.
+            IsAllCornersIs(x => x == 90).
+            IsCornerCount(4));
     }
     [TestMethod]
     public void RectIsRect()
@@ -122,6 +140,8 @@ public class TestFigures
         pol.Points.Add(new Point(2, 0));
         pol.Points.Add(new Point(2, 1));
         pol.Points.Add(new Point(0, 1));
-        Assert.IsTrue((bool)pol.CheckIfThis.IsCornerCount(4).IsTwoSidesParallel(0, 2).IsTwoSidesParallel(1, 3));
+        Assert.IsTrue((bool)pol.CheckIfThis.
+            IsAllCornersIs(x => x == 90).
+            IsCornerCount(4));
     }
 }
